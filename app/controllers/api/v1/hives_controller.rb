@@ -2,6 +2,7 @@ module Api
   module V1
     class HivesController < ApplicationController
       before_action :set_hive, only: %i[show]
+      rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
       # GET /hives
       def index
@@ -36,6 +37,10 @@ module Api
       # Only allow a list of trusted parameters through.
       def hive_params
         params.require(:hive).permit(:name, :weight)
+      end
+
+      def record_not_found
+        render json: { error: 'Sorry, Hive not found' }, status: :not_found
       end
     end
   end
