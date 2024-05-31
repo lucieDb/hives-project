@@ -30,7 +30,7 @@ import { ref, onMounted } from 'vue'
 const hives = ref([])
 const name = ref('')
 const weight = ref('')
-const API_URL = "http://localhost:3000/api/v1/hives";
+const API_URL = import.meta.env.VITE_API_URL
 
 onMounted(async () => {
     const res = await fetch(API_URL)

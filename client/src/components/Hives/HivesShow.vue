@@ -16,7 +16,7 @@
   const route = useRoute()
   const id = route.params.id
   const hive = ref(null)
-  const API_URL = "http://localhost:3000/api/v1/hives";
+  const API_URL = import.meta.env.VITE_API_URL
 
   const fetchHivesShow = async () => {
     const res = await fetch(API_URL + `/${id}`)
