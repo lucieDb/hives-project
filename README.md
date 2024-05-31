@@ -1,24 +1,56 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+***Welcome to the hives project***
 
-Things you may want to cover:
+**Prerequisites**
+- Rails 7.1.3.3
+- Ruby 3.3.0
+- Vue 3 in Vite
 
-* Ruby version
+**Project Goal**
 
-* System dependencies
+For the bees lovers, this is an environnement to list all the hives you got !
 
-* Configuration
+This project is separated in 2 parts : back-end in Rails Api and a front-end in VueJS.
+(For the VueJs part : go to the README.md in the client/README.md)
 
-* Database creation
+1. **Checkout the repository**
 
-* Database initialization
+`git clone https://github.com/lucieDb/hives-project.git`
 
-* How to run the test suite
+2. **Build a database with PostgreSQL**
 
-* Services (job queues, cache servers, search engines, etc.)
+In your condig/database.yml, modify the development part and configure it with PG informations :
 
-* Deployment instructions
+`default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: your_username
+  password: your_password
+  host: localhost`
 
-* ...
+Run the following commands : 
+
+`bundle exec rails db:create`
+`bundle exec rails db:migrate`
+
+3. **Start Rails server**
+
+`bundle exec rails s`
+
+4. **Run tests**
+
+`bundle exec rails test test/path_test.rb`
+
+And now, you can visit the site with [this URL](http://localhost:3000/api/v1/hives)
+Add a hive with the console rails, for example : `Hive.create(name: "BeeGeezz", weight: 150)`
+Your BeeGeezz Hive will appaer with a json format. For the action controler, let's go to the VueJs Readme for launch the front side.
+
+**Versioning**
+
+In this project, I create a v1 application in a api folder. Aadd a v2 if you want to improve this project.  
+
+**Documentation**
+- [Ruby Guide](https://guides.rubyonrails.org/api_app.html)
+- [Medium article](https://medium.com/@laasrisaid34/step-by-step-guide-to-creating-a-ruby-on-rails-application-with-postgresql-46fef05c212b)
