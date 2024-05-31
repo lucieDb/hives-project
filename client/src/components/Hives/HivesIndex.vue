@@ -37,13 +37,16 @@
   const name = ref('')
   const error = ref(null)
   const weight = ref('')
+  
   const API_URL = import.meta.env.VITE_API_URL
 
+  // rendering
   onMounted(async () => {
       const response = await fetch(API_URL)
       hives.value = await response.json()
   })
 
+  // create hive with error handle through hive rails model (app/models/hive.rb)
   const createHive = async () => {
     error.value = null
 

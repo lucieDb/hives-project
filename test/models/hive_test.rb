@@ -1,4 +1,10 @@
+# frozen_string_literal: true
+
 require "test_helper"
+
+# apply test hive model:
+#  1- rails db:migrate RAILS_ENV=test (only if it's the first time)
+#  2- rails test test/models/hive_test.rb
 
 class HiveTest < ActiveSupport::TestCase
   def setup

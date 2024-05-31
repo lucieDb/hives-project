@@ -23,8 +23,8 @@
 
   const API_URL = import.meta.env.VITE_API_URL
 
-  const fetchHivesShow = async () => {
-    
+  // display specific hive with error handle (app/controllers/api/v1/hives_controller.rb)
+  const fetchHiveShow = async () => {
     try {
       const response = await fetch(API_URL + `/${id}`)
 
@@ -39,5 +39,6 @@
     }
   }
 
-  onMounted(fetchHivesShow)
+  // rendering
+  onMounted(fetchHiveShow)
 </script>

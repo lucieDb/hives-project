@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Hives from '../components/Hives/HivesIndex.vue'
-import HivesShow from '../components/Hives/HivesShow.vue'
+import HiveShow from '../components/Hives/HiveShow.vue'
 
 const routes = [
   { path: '/', component: Hives },
-  { path: '/hives/:id', component: HivesShow, props: true }
+  { path: '/hives/:id', component: HiveShow, props: true }
 ]
 
 const router = createRouter({

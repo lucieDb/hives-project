@@ -1,22 +1,25 @@
+# frozen_string_literal: true
+
 module Api
   module V1
+    # Hives Controller
     class HivesController < ApplicationController
       before_action :set_hive, only: %i[show]
       rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
-      # GET /hives
+      # GET api/v1/hives
       def index
         @hives = Hive.all
 
         render json: @hives
       end
 
-      # GET /hives/1
+      # GET api/v1/hives/1
       def show
         render json: @hive
       end
 
-      # POST /hives
+      # POST api/v1/hives
       def create
         @hive = Hive.new(hive_params)
 
@@ -27,7 +30,7 @@ module Api
         end
       end
 
-    private
+      private
 
       # Use callbacks to share common setup or constraints between actions.
       def set_hive
@@ -39,6 +42,7 @@ module Api
         params.require(:hive).permit(:name, :weight)
       end
 
+      # Handle request for unknown hive
       def record_not_found
         render json: { error: 'Sorry, Hive not found' }, status: :not_found
       end
