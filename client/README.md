@@ -19,18 +19,19 @@ This project is separated in 2 parts : back-end in Rails Api and a front-end in 
 
 **Before Rails Config**
 
-- Gemfile configuration
+*Gemfile configuration*
+
 Go to your Gemfile, check if the rack-cors gem is uncommented. 
 Go to config/initializers/cors.rb, check if this part is uncommented and change origins for '*' : 
 
 ``Rails.application.config.middleware.insert_before 0, Rack::Cors do
-  allow do
-    origins "*"
+    allow do
+        origins "*"
 
-    resource "*",
-      headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head]
-  end
+        resource "*",
+            headers: :any,
+            methods: [:get, :post, :put, :patch, :delete, :options, :head]
+    end
 end``
 
 To handle Cross-Origin Resource Sharing (CORS), it's a security mechanism to add HTTP requests for a server ressource access located on another origin than the current site, in our case : the API part.
