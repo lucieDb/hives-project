@@ -15,7 +15,8 @@
           <h2>hives list</h2>
           <br>
           <li v-for="hive in hives" :key="hive.id">
-            {{ hive.name }} for {{ hive.weight }} kg
+            {{ hive.name }}
+            <router-link :to="`/hives/${hive.id}`">Show details</router-link>
           </li>
         </div>
       </div>

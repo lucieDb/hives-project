@@ -1,9 +1,5 @@
 <template>
-  <div>
-    <Hives />
-  </div>
+  <router-view />
 </template>
 
-<script setup>
-  import Hives from './components/Hives/Hives.vue'
-</script>
+<script setup></script>
