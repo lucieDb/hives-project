@@ -4,6 +4,9 @@
     <hr>
     <div class="container">
       <div class='row'>
+        <div v-if="error" class="error-alert">
+          {{ error }}
+        </div>
         <div class='col-6'>
           <h2>create a hive</h2>
           <br>
@@ -25,35 +28,47 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+  import { ref, onMounted } from 'vue'
 
-const hives = ref([])
-const name = ref('')
-const weight = ref('')
-const API_URL = import.meta.env.VITE_API_URL
+  const hives = ref([])
+  const name = ref('')
+  const error = ref(null)
+  const weight = ref('')
+  const API_URL = import.meta.env.VITE_API_URL
 
-onMounted(async () => {
-    const res = await fetch(API_URL)
-    hives.value = await res.json()
-})
-
-const createHive = async () => {
-  const response = await fetch(API_URL, {
-    method: 'POST',
-    headers: {
-    'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      name: name.value,
-      weight: weight.value
-    })
+  onMounted(async () => {
+      const response = await fetch(API_URL)
+      hives.value = await response.json()
   })
 
-  const data = await response.json();
+  const createHive = async () => {
+    error.value = null
 
-  hives.value.push(data)
-  name.value = ''
-  weight.value = ''
-}
+    try { 
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name.value,
+          weight: weight.value
+        })
+      })
 
+      const data = await response.json();
+
+      if (!response.ok) {
+        console.log('data', data)
+        throw new Error(data.name || data.weight)
+      }
+
+      hives.value.push(data)
+      name.value = ''
+      weight.value = ''
+    } catch (err) {
+      error.value = err
+      console.log('err', err)
+    }
+  }
 </script>

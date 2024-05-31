@@ -2,9 +2,12 @@
   <div>
     <h1>Hive Details</h1>
     <br>
-    <div>
+    <div v-if="error" class="error-alert">
+      {{ error }}
+    </div>
+    <div v-else>
       <li>Name : {{ hive?.name }}</li>
-      <li>Weight : {{ hive?.weight }}</li>
+      <li>Weight : {{ hive?.weight }} kg</li>
     </div>
   </div>
 </template>
@@ -16,12 +19,24 @@
   const route = useRoute()
   const id = route.params.id
   const hive = ref(null)
+  const error = ref(null)
+
   const API_URL = import.meta.env.VITE_API_URL
 
   const fetchHivesShow = async () => {
-    const res = await fetch(API_URL + `/${id}`)
-   
-    hive.value = await res.json()
+    
+    try {
+      const response = await fetch(API_URL + `/${id}`)
+
+      if(!response.ok) {
+        const errorData = await response.json()               
+        throw new Error(errorData.error)
+      }
+
+      hive.value = await response.json()
+    } catch (err) {
+      error.value = err.message
+    }
   }
 
   onMounted(fetchHivesShow)
