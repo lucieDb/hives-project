@@ -38,7 +38,7 @@ To handle Cross-Origin Resource Sharing (CORS), it's a security mechanism to add
 
 **Create VueJS Part**
 
-1.In your terminal, go in the same location than your rails app, run the following commands to start the server : 
+1.In your terminal, go in the same location than your rails app, go into the client folder, run the following commands to start the server : 
 
 `npm run dev`
 
