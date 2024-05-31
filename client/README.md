@@ -20,8 +20,8 @@ This project is separated in 2 parts : back-end in Rails Api and a front-end in 
 **Before Rails Config**
 
 1. Gemfile configuration
-Go to your Gemfile, uncomment the rack-cors gem. 
-Go to config/initializers/cors.rb, uncomment this part and change origins for '*' : 
+Go to your Gemfile, check if the rack-cors gem is uncommented. 
+Go to config/initializers/cors.rb, check if this part is uncommented and change origins for '*' : 
 
 `Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
@@ -33,15 +33,15 @@ Go to config/initializers/cors.rb, uncomment this part and change origins for '*
   end
 end`
 
-For handle Cross-Origin Resource Sharing (CORS), it's a security mechanism to add HTTP requests for a server ressource access located on another origin than the current site, in our case : the API part  
+To handle Cross-Origin Resource Sharing (CORS), it's a security mechanism to add HTTP requests for a server ressource access located on another origin than the current site, in our case : the API part.
 
 **Create VueJS Part**
 
 1.In your terminal, go in the same location than your rails app, run the following commands : 
 
-`npm create vite@latest`, name the project client, choose the Vue framework and the JS variant, then run `cd client`, `npm install` and `npm run dev` for start the server
+`npm run dev` to start the server
 
-2.Go to [the URL](localhost:5173) and your BeeGeezz will appaer. Now you can add your own hive with the form.
+2.Go to [the URL](http://localhost:5173) and your BeeGeezz will appear. Now you can add your own hive with the form.
 
 **Documentation**
 

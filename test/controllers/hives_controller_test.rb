@@ -1,8 +1,8 @@
 require "test_helper"
 
 # apply test hive controller:
-#  1- rails db:migrate RAILS_ENV=test (only if it's the first time)
-#  2- rails test test/controllers/hives_controller_test.rb
+#  1- bundle exec db:migrate RAILS_ENV=test (only if it's the first time)
+#  2- bundle exec test test/controllers/hives_controller_test.rb
 
 class HivesControllerTest < ActionDispatch::IntegrationTest
   setup do
