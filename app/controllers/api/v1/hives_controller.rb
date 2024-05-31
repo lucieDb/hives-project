@@ -20,7 +20,7 @@ module Api
         @hive = Hive.new(hive_params)
 
         if @hive.save
-          render json: @hive, status: :created, location: @hive
+          render json: @hive, status: :created, location: api_v1_hive_url(@hive)
         else
           render json: @hive.errors, status: :unprocessable_entity
         end
