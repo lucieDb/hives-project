@@ -20,6 +20,23 @@ This project is separated in 2 parts : back-end in Rails Api and a front-end in 
 
 2. **Build a database with PostgreSQL**
 
+Create an .env file at the root project, declare your own environment variables like : 
+
+`DATABASE_USERNAME=your_username`
+
+`DATABASE_PASSWORD=your_password`
+
+Use it in the database.yml like this : 
+``
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch("DATABASE_USERNAME") %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") %>
+  host: localhost
+``
+
 Run the following commands : 
 
 `bundle exec rails db:create`
