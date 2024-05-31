@@ -1,21 +1,24 @@
 <template>
-  <div>
+  <div class="bg-light">
     <h1>Welcome to the Hives Project</h1>
     <hr>
     <div class="container">
       <div class='row'>
-        <div v-if="error" class="error-alert">
+        <div v-if="error" class="alert alert-danger">
           {{ error }}
         </div>
         <div class='col-6'>
-          <h2>create a hive</h2>
+          <h2>Create a hive</h2>
           <br>
-          <input type="text" v-model="name" placeholder="enter the new hive name" />
-          <input type="text" v-model="weight" placeholder="enter the new hive weight" />
+          <div>
+            <input type="text" v-model="name" placeholder="enter the new hive name" class="hive-input" />
+            <input type="text" v-model="weight" placeholder="enter the new hive weight" class="hive-input" />
+          </div>
+          <br>
           <button @click="createHive" type="button" class="btn btn-primary">Create</button>
         </div>
         <div class='col-6'>
-          <h2>hives list</h2>
+          <h2>Hives list</h2>
           <br>
           <li v-for="hive in hives" :key="hive.id">
             {{ hive.name }}

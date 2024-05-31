@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="bg-light">
     <h1>Hive Details</h1>
     <br>
-    <div v-if="error" class="error-alert">
+    <div v-if="error" class="alert alert-danger">
       {{ error }}
     </div>
     <div v-else>
-      <li>Name : {{ hive?.name }}</li>
+      <li >Name : {{ hive?.name }}</li>
       <li>Weight : {{ hive?.weight }} kg</li>
     </div>
   </div>
