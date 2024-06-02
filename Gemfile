@@ -14,6 +14,9 @@ gem "puma", ">= 5.0"
 # debug
 gem 'pry', '~> 0.14.2'
 
+# load env variables
+gem 'dotenv-rails', groups: %i[development test]
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 

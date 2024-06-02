@@ -20,15 +20,22 @@ This project is separated in 2 parts : back-end in Rails Api and a front-end in 
 
 2. **Build a database with PostgreSQL**
 
-In your condig/database.yml, modify the development part and configure it with PG informations :
+Create an .env file at the root project, declare your own environment variables like : 
 
-`default: &default
+`DATABASE_USERNAME=your_username`
+
+`DATABASE_PASSWORD=your_password`
+
+Use it in the database.yml like this : 
+``
+default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: your_username
-  password: your_password
-  host: localhost`
+  username: <%= ENV.fetch("DATABASE_USERNAME") %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") %>
+  host: localhost
+``
 
 Run the following commands : 
 
@@ -41,15 +48,16 @@ Run the following commands :
 
 4. **Run tests**
 
+`bundle exec rails db:migrate RAILS_ENV=test` (only if it's the first time)
 `bundle exec rails test test/path_test.rb`
 
 And now, you can visit the site with [this URL](http://localhost:3000/api/v1/hives)
 Add a hive with the console rails, for example : `Hive.create(name: "BeeGeezz", weight: 150)`
-Your BeeGeezz Hive will appaer with a json format. For the action controler, let's go to the VueJs Readme for launch the front side.
+Your BeeGeezz Hive will appaer with a json format. For the action controller, let's go to the VueJs Readme to launch the front side.
 
 **Versioning**
 
-In this project, I create a v1 application in a api folder. Aadd a v2 if you want to improve this project.  
+In this project, I create a v1 application in an api folder. Add a v2 if you want to improve this project.  
 
 **Documentation**
 - [Ruby Guide](https://guides.rubyonrails.org/api_app.html)
